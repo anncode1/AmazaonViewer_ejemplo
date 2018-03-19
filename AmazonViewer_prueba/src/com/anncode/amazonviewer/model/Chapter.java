@@ -42,13 +42,13 @@ public class Chapter extends Movie {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return  "\n :: SERIE ::" + 
-				"\n Title: " + getSerie().getTitle() +
-				"\n :: CHAPTER ::" + 
+		return  "\n :: CHAPTER ::" + 
 				"\n Title: " + getTitle() +
 				"\n Year: " + getYear() + 
 				"\n Creator: " + getCreator() +
-				"\n Duration: " + getDuration();
+				"\n Duration: " + getDuration() +
+				"\n :: SERIE ::" + 
+				"\n Title: " + getSerie().getTitle() ;
 	}
 	
 	
@@ -61,4 +61,32 @@ public class Chapter extends Movie {
 		
 		return chapters;
 	}
+	
+	@Override
+	public void toSee() {
+		// TODO Auto-generated method stub
+		super.toSee();
+		ArrayList<Chapter> chapters = getSerie().getChapters();
+		int chapterViewedCounter = 0;
+		for (Chapter chapter : chapters) {
+			if (chapter.getIsViewed()) {
+				chapterViewedCounter++;
+			}
+		}
+		if (chapterViewedCounter == chapters.size()) {
+			getSerie().setViewed(true);
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -57,6 +57,24 @@ public class Movie extends Film implements IVisualizable {
 		
 	}
 	
+
+	@Override
+	public void toSee() {
+		// TODO Auto-generated method stub
+		setViewed(true);
+		Date dateI = startToSee(new Date());
+		
+		for (int i = 0; i < 100000; i++) {
+			System.out.println("..........");
+		}
+		
+		//Termine de verla
+		stopToSee(dateI, new Date());
+		System.out.println();
+		System.out.println("Viste: " + toString());
+		System.out.println("Por: " + getTimeViewed() + " milisegundos");
+	}
+	
 	public static ArrayList<Movie> makeMoviesList() {
 		ArrayList<Movie> movies = new ArrayList();
 		
@@ -66,7 +84,8 @@ public class Movie extends Film implements IVisualizable {
 		
 		return movies;
 	}
-	
+
+
 }
 
 

@@ -3,7 +3,6 @@ package com.anncode.amazonviewer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 import com.anncode.amazonviewer.model.Book;
 import com.anncode.amazonviewer.model.Chapter;
@@ -101,28 +100,18 @@ public class Main {
 			if(response == 0) {
 				exit = 0;
 				showMenu();
-				break;
 			}
 			if (response > 0) {
 				Movie movieSelected = movies.get(response-1);
-				movieSelected.setViewed(true);
-				Date dateI = movieSelected.startToSee(new Date());
+				movieSelected.toSee();
 				
-				for (int i = 0; i < 100000; i++) {
-					System.out.println("..........");
-				}
-				
-				//Termine de verla
-				movieSelected.stopToSee(dateI, new Date());
-				System.out.println();
-				System.out.println("Viste: " + movieSelected);
-				System.out.println("Por: " + movieSelected.getTimeViewed() + " milisegundos");
 			}
 			
 			
 		}while(exit !=0);
 		
 	}
+	
 	static ArrayList<Serie> series = Serie.makeSeriesList();
 	public static void showSeries() {
 		int exit = 1;
@@ -154,7 +143,6 @@ public class Main {
 			
 		}while(exit !=0);
 	}
-	
 	public static void showChapters(ArrayList<Chapter> chaptersOfSerieSelected) {
 		int exit = 1;
 		
@@ -181,18 +169,8 @@ public class Main {
 			
 			if(response > 0) {
 				Chapter chapterSelected = chaptersOfSerieSelected.get(response-1);
-				chapterSelected.setViewed(true);
-				Date dateI = chapterSelected.startToSee(new Date());
+				chapterSelected.toSee();
 				
-				for (int i = 0; i < 100000; i++) {
-					System.out.println("..........");
-				}
-				
-				//Termine de verla
-				chapterSelected.stopToSee(dateI, new Date());
-				System.out.println();
-				System.out.println("Viste: " + chapterSelected);
-				System.out.println("Por: " + chapterSelected.getTimeViewed() + " milisegundos");
 			}
 		}while(exit !=0);
 	}
@@ -223,18 +201,7 @@ public class Main {
 			
 			if(response > 0) {
 				Book bookSelected = books.get(response-1);
-				bookSelected.setReaded(true);
-				Date dateI = bookSelected.startToSee(new Date());
-				
-				for (int i = 0; i < 100000; i++) {
-					System.out.println("..........");
-				}
-				
-				//Termine de verla
-				bookSelected.stopToSee(dateI, new Date());
-				System.out.println();
-				System.out.println("Leíste: " + bookSelected);
-				System.out.println("Por: " + bookSelected.getTimeReaded() + " milisegundos");
+				bookSelected.toSee();
 			}
 			
 		}while(exit !=0);
@@ -283,6 +250,10 @@ public class Main {
 		}
 		
 		for (Serie serie : series) {
+			if (serie.getIsViewed()) {
+				contentReport += "\n\nViste esta serie completa: " + serie.toString() + "\n";
+			}
+			
 			ArrayList<Chapter> chapters = serie.getChapters();
 			for (Chapter chapter : chapters) {
 				if (chapter.getIsViewed()) {
@@ -327,7 +298,12 @@ public class Main {
 			}
 		}
 		
+		
 		for (Serie serie : series) {
+			if (serie.getIsViewed()) {
+				contentReport += "\n\nViste esta serie completa: " + serie.toString() + "\n";
+			}
+			
 			ArrayList<Chapter> chapters = serie.getChapters();
 			for (Chapter chapter : chapters) {
 				if (chapter.getIsViewed()) {
