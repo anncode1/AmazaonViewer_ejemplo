@@ -20,10 +20,6 @@ public class Book extends Publication implements IVisualizable {
 		this.pages = pages;
 	}
 
-	public Book() {
-		// TODO Auto-generated constructor stub
-		super();
-	}
 
 	public int getId() {
 		return id;
@@ -140,25 +136,28 @@ public class Book extends Publication implements IVisualizable {
 		System.out.println();
 		System.out.println("Leíste: " + toString());
 		System.out.println("Por: " + getTimeReaded() + " milisegundos");
+		
 	}
 	
-	public static ArrayList<Book> makeBookList() {
+	public static ArrayList<Book> makeBookList(){
+		
 		ArrayList<Book> books = new ArrayList();
 		String[] authors = new String[3];
 		for (int i = 0; i < 3; i++) {
 			authors[i] = "author "+i;
 		}
-		
+	
 		ArrayList<Page> pages = new ArrayList();
 		int j = 0;
 		for (int i = 0; i < 3; i++) {
 			j = i+1;
-			pages.add(new Book().new Page(j, "El contenido de la página " + j));
+			pages.add(new Book.Page(j, "El contenido de la página " + j));
 		}
 		
 		for (int i = 1; i <= 5; i++) {
 			books.add(new Book("Book " + i, new Date(), "editorial " + i, authors, pages));
 		}
+		
 		
 		return books;
 	}
@@ -174,7 +173,7 @@ public class Book extends Publication implements IVisualizable {
 	}
 
 
-	private class Page {
+	public static class Page {
 		private int id;
 		private int number;
 		private String textContent;

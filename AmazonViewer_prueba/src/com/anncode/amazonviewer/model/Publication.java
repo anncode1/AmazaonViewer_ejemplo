@@ -17,11 +17,6 @@ public abstract class Publication {
 		this.editorial = editorial;
 	}
 	
-	
-	public Publication() {
-		// TODO Auto-generated constructor stub
-	}
-
 
 	public String getTitle() {
 		return title;
