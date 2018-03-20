@@ -2,7 +2,7 @@ package com.anncode.amazonviewer.model;
 
 import java.util.Date;
 
-public class Publication {
+public abstract class Publication {
 	
 	private String title;
 	private Date edititionDate;
@@ -18,6 +18,11 @@ public class Publication {
 	}
 	
 	
+	public Publication() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getTitle() {
 		return title;
 	}

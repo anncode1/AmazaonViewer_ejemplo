@@ -3,6 +3,11 @@ package com.anncode.amazonviewer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Hereda de {@link Film}
+ * @see Film //también ve
+ * 
+ * */
 public class Movie extends Film implements IVisualizable {
 	
 	private int id;
@@ -57,7 +62,9 @@ public class Movie extends Film implements IVisualizable {
 		
 	}
 	
-
+	/**
+	 * {@inheritDoc}
+	 * */
 	@Override
 	public void toSee() {
 		// TODO Auto-generated method stub

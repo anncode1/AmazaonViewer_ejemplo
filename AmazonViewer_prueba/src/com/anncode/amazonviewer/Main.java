@@ -12,6 +12,19 @@ import com.anncode.amazonviewer.model.Serie;
 import com.anncode.makereport.Report;
 import com.anncode.util.AmazonUtil;
 
+
+/**
+ * <h1>AmazonViewer</h1>
+ * AmazonViewer es un programa que permite visualizar Movies, Series con sus respectivos Chapters,
+ * Books y Magazines. Te permite generar reportes generales y con fecha del día.
+ * <p>
+ * Existen algunas reglas como que todos los elementos pueden ser visualizadors o leídos a excepción
+ * de las Magazines, estás solo pueden ser vistas a modo de exposición sin ser leídas.
+ * 
+ * @author anncode
+ * @version 1.1
+ * @since 2018
+ * */
 public class Main {
 
 	public static void main(String[] args) {
@@ -234,6 +247,10 @@ public class Main {
 		}while(exit !=0);
 	}
 	
+	/**
+	 * Este método genera un reporte de todo lo que ha visualizado el usuario en su historia.
+	 * 
+	 * */
 	public static void makeReport() {
 		
 		Report report = new Report();
@@ -277,6 +294,11 @@ public class Main {
 		System.out.println();
 	}
 	
+	/**
+	 * Este método genera un reporte de lo visualizado desde que inició sesión hasta el momento
+	 * 
+	 * @param date Este es un objeto que lleva consigo la fecha y hora en que se generó el reporte
+	 * */
 	public static void makeReport(Date date) {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-h-m-s-S");
 		String dateString = df.format(date);
